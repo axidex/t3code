@@ -1,3 +1,4 @@
+import * as SourceCraft from "@t3tools/source-control-sourcecraft/shared/definition";
 import * as AzureDevOps from "@t3tools/source-control-azure-devops/shared/definition";
 import * as Bitbucket from "@t3tools/source-control-bitbucket/shared/definition";
 import { makeSourceControlDefinitionRegistry } from "@t3tools/source-control-core/shared/definition";
@@ -20,6 +21,7 @@ export const builtInSourceControlDefinitions = makeSourceControlDefinitionRegist
     GitHub.definition,
     CursorOrigin.definition,
     GitLab.definition,
+    SourceCraft.definition,
     GitCafe.definition,
     Forgejo.definition,
     Bitbucket.definition,
@@ -32,6 +34,7 @@ export const builtInSourceControlDefinitions = makeSourceControlDefinitionRegist
       AzureDevOps.definition.kind,
     ],
     recognizeRemotesIn: [
+      SourceCraft.definition.kind,
       GitCafe.definition.kind,
       CursorOrigin.definition.kind,
       Forgejo.definition.kind,

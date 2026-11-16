@@ -1,6 +1,6 @@
 # Source control
 
-T3 Code integrates with GitHub, GitLab, Forgejo, Gitea, Bitbucket, Azure DevOps, GitCafe, and Cursor
+T3 Code integrates with GitHub, GitLab, Forgejo, Gitea, Bitbucket, Azure DevOps, GitCafe, SourceCraft, and Cursor
 Origin to clone and publish repositories, create pull requests, and review changes.
 
 ## Review turn changes
@@ -110,6 +110,34 @@ Install [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/), add the DevOp
 az extension add --name azure-devops
 az login
 ```
+
+### SourceCraft
+
+Install [SourceCraft CLI](https://sourcecraft.dev/portal/docs/ru/sourcecraft/operations/cli-quickstart)
+on the machine running the T3 Code server. Use a current version that supports `src api`,
+then configure it and sign in:
+
+```bash
+src init
+src auth login
+src auth setup-git
+```
+
+T3 Code uses the credentials and environment selected by `src` in the project's directory,
+including custom environments. Manage environments with `src envs`; T3 Code does not override
+the CLI's selection. Refresh **Settings → Source control** after signing in or switching environments.
+
+Use a Git remote from your configured SourceCraft environment or paste its PR URL. You can create repositories
+under an organization, create and check out PRs, read diffs and checks, comment, submit review
+decisions, merge, close, reopen, and switch between draft and published PRs. Review comments
+can target a line or range; you can reply, edit comments, and resolve or reopen discussions.
+Selections spanning both sides of a diff attach to the last selected line; ranges on one
+side keep their full selection.
+Existing reviewers and the overall review decision are shown. Requesting reviewers, reactions,
+and branch updates are not supported yet.
+
+Reopening a discussion marks it as awaiting resolution in SourceCraft and can block merging
+until it is resolved again.
 
 ### GitCafe
 
